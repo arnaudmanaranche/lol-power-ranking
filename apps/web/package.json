@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@headlessui/react": "1.4.2",
+    "@liveblocks/client": "0.15.10",
+    "@liveblocks/react": "0.15.10",
     "@lpr/ui": "*",
     "@panelbear/panelbear-nextjs": "1.0.3",
     "@prisma/client": "2.26.0",
