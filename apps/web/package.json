@@ -29,7 +29,7 @@
     "preact": "10.6.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sharp": "0.30.5"
+    "sharp": "0.30.7"
   },
   "devDependencies": {
     "@lpr/configs": "*",
