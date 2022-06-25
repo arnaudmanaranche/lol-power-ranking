@@ -1,7 +1,7 @@
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function revalidate(req: NextApiRequest, res: NextApiResponse) {
   if (req.query.secret !== process.env.UNSTABLE_REVALIDATE_SECRET) {
     return res.status(401).json({ message: 'Invalid unstable revalidate secret' })
   }
@@ -14,4 +14,4 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-export default withSentry(handler)
+export default withSentry(revalidate)

@@ -6,10 +6,13 @@ import { ReactElement, useEffect, useState } from 'react'
 
 import type { RANKING_VALUES, TEAM, TOURNAMENT } from '@lpr/types'
 import { Button, Modal, Team } from '@lpr/ui'
+import Title from '@lpr/ui/src/Title'
 
+import TwitterIcon from 'Assets/twitter.svg'
 import { useUser } from 'Contexts/user'
+import { apiInstance } from 'Utils/api'
 import { login } from 'Utils/auth'
-import { DEFAULT_TITLE } from 'Utils/constants'
+import { API_ENDPOINT, DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
 
@@ -35,14 +38,13 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
 
   const createRanking = async () => {
     try {
-      const post = await fetch('/api/ranking/new', {
-        method: 'POST',
+      const res = await apiInstance.post('/rankings', {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ranking, tournamentId: id, userId: user?.id })
+        body: JSON.stringify({ ranking, tournamentId: id, userId: user.id })
       })
-      const data = await post.json()
+      const data = res.data
       PanelbearTrack('NewRanking')
       setRankingId(data.id)
       toggleModal()
@@ -79,7 +81,7 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
         <meta property="og:image:height" content="200" />
         <meta property="og:image:alt" content={`${name} logo`} />
       </Head>
-      <div className="flex flex-col items-center mb-10">
+      <div className="flex justify-center items-center mb-10">
         <Image
           src={logo}
           alt={`${name} logo`}
@@ -89,9 +91,9 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
           placeholder="blur"
           blurDataURL={base64}
         />
-        <div className="prose lg:prose-xl">
-          <h1 className="capitalize dark:text-white">{name}</h1>
-        </div>
+        <Title tag="h1" className="capitalize">
+          {name}
+        </Title>
       </div>
       <div className="grid gap-10 px-6 mx-auto sm:grid-cols-2 md:grid-cols-3 lg:px-0">
         {ranking?.map(({ id: teamId, logo, name, players, base64 }) => (
@@ -113,7 +115,9 @@ const Ranking = ({ tournament }: { tournament: TOURNAMENT }): ReactElement => {
         {user?.id ? (
           <Button onClick={createRanking}>{`Create my ${name} power ranking`}</Button>
         ) : (
-          <Button onClick={login}>Login with Twitter</Button>
+          <Button onClick={login}>
+            Login with Twitter <TwitterIcon className="w-5 h-5 ml-2" />
+          </Button>
         )}
       </div>
       <Modal title="Your power ranking was created" toggleModal={toggleModal} isOpen={isModalOpen}>

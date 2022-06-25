@@ -18,7 +18,7 @@ const Footer = (): ReactElement => (
       </p>
     </div>
     <p>
-      Stats provided by{' '}
+      Data provided by{' '}
       <Link href="https://pandascore.co/">
         <a className="text-primary" target="_blank" rel="noreferrer noopener">
           PandaScore

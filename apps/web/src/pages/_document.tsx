@@ -27,20 +27,20 @@ class AppDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           <link
             rel="preload"
-            href="/fonts/fira-sans.woff2"
+            href="/fonts/cabin-bold.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="true"
           />
           <link
             rel="preload"
-            href="/fonts/merriweather.woff2"
+            href="/fonts/cabin-regular.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="true"
           />
         </Head>
-        <body>
+        <body className="font-body antialiased">
           <Main />
           <NextScript />
         </body>

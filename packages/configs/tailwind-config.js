@@ -21,8 +21,8 @@ module.exports = {
         dTier: "#8b7fc5",
       },
       fontFamily: {
-        title: ["FiraSans"],
-        body: ["Merriweather"],
+        title: ["CabinBold"],
+        body: ["CabinRegular"],
       },
     },
   },

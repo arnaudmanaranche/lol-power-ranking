@@ -13,12 +13,12 @@
     "web#build": {
       "dependsOn": [
         "^build",
-        "$APP_ENV",
         "$DATABASE_URL",
+        "$NEXT_PUBLIC_APP_ENV",
         "$NEXT_PUBLIC_PANELBEAR_SITE_ID",
+        "$NEXT_PUBLIC_SENTRY_DSN",
         "$NEXT_PUBLIC_SUPABASE_ID",
         "$NEXT_PUBLIC_SUPABASE_TOKEN",
-        "$NEXT_PUBLIC_SENTRY_DSN",
         "$OSANO_URL",
         "$PANDASCORE_TOKEN",
         "$PRISMA_SERVICE_ROLE",
@@ -26,6 +26,9 @@
         "$UNSTABLE_REVALIDATE_SECRET"
       ],
       "outputs": [".next/**"]
+    },
+    "postbuild": {
+      "dependsOn": ["^postbuild"]
     },
     "test": {
       "dependsOn": ["^build"],

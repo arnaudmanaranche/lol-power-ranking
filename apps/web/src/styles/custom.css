@@ -1,15 +1,15 @@
 @font-face {
-  font-family: FiraSans;
+  font-family: CabinBold;
   font-style: normal;
   font-display: optional;
-  src: url('/fonts/fira-sans.woff2') format('woff2');
+  src: url('/fonts/cabin-bold.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: Merriweather;
+  font-family: CabinRegular;
   font-style: normal;
   font-display: optional;
-  src: url('/fonts/merriweather.woff2') format('woff2');
+  src: url('/fonts/cabin-regular.woff2') format('woff2');
 }
 
 .custom-bg {

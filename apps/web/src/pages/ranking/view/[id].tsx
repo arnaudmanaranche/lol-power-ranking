@@ -6,7 +6,9 @@ import type { ReactElement } from 'react'
 
 import type { RANKING, RANKING_VALUES } from '@lpr/types'
 import { Button, Team } from '@lpr/ui'
+import Title from '@lpr/ui/src/Title'
 
+import { apiInstance } from 'Utils/api'
 import { DEFAULT_TITLE } from 'Utils/constants'
 import prisma from 'Utils/prisma'
 import redis, { ONE_YEAR_IN_SECONDS } from 'Utils/redis'
@@ -23,16 +25,15 @@ const ViewRanking = ({
 
   const updateRanking = async () => {
     try {
-      const fetchResponse = await fetch('/api/ranking/update', {
-        method: 'PATCH',
+      const res = await apiInstance.patch('/rankings', {
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ ranking })
       })
-      const data = await fetchResponse.json()
+      const updatedRanking = res.data
       PanelbearTrack('UpdateRanking')
-      return data
+      return updatedRanking
     } catch (error) {
       return error
     }
@@ -60,19 +61,19 @@ const ViewRanking = ({
         <meta property="og:image:height" content="200" />
         <meta property="og:image:alt" content={`${ranking?.tournament?.name} logo`} />
       </Head>
-      <div className="m-auto mb-10 prose lg:prose-xl">
-        <h1 className="flex items-center justify-center mb-4 capitalize">
-          <Image
-            src={ranking.tournament.logo}
-            alt={`${ranking?.tournament?.name} logo`}
-            height={60}
-            width={60}
-            id={ranking?.tournament?.name}
-            placeholder="blur"
-            blurDataURL={ranking?.tournament?.base64}
-          />
-          <p>{ranking.tournament.name}</p>
-        </h1>
+      <div className="flex justify-center items-center mb-10">
+        <Image
+          src={ranking.tournament.logo}
+          alt={`${ranking?.tournament?.name} logo`}
+          height={60}
+          width={60}
+          id={ranking?.tournament?.name}
+          placeholder="blur"
+          blurDataURL={ranking?.tournament?.base64}
+        />
+        <Title tag="h1" className="capitalize">
+          {ranking?.tournament?.name}
+        </Title>
       </div>
       <div className="grid gap-10 mx-auto sm:grid-cols-2 md:grid-cols-3">
         {copyRanking?.data?.map(({ id: teamId, logo, name, players, base64 }) => (

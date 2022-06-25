@@ -7,19 +7,19 @@ import { Fragment, useEffect } from 'react'
 
 import { Button } from '@lpr/ui'
 
+import TwitterIcon from 'Assets/twitter.svg'
+import UserIcon from 'Assets/user.svg'
 import { useSetUser, useUser } from 'Contexts/user'
-import { checkUser, handleAuthChange, login, logout } from 'Utils/auth'
+import { handleAuthChange, handleLogin, login, logout } from 'Utils/auth'
 import { DEFAULT_TITLE, ROUTES, SUPABASE_EVENTS } from 'Utils/constants'
 import supabase from 'Utils/supabase'
-
-import TwitterIcon from '../../svgs/twitter.svg'
 
 const { HOME, TOURNAMENTS, MY_RANKINGS, SETTINGS } = ROUTES
 
 const LINKS = [{ label: 'Tournaments', path: TOURNAMENTS }]
 const DROPDOWN_LINKS = [
   { label: 'My Rankings', path: MY_RANKINGS },
-  { label: 'My Settings', path: SETTINGS }
+  { label: 'Settings', path: SETTINGS }
 ]
 
 const Header = (): ReactElement => {
@@ -34,7 +34,7 @@ const Header = (): ReactElement => {
       handleAuthChange(event, session)
 
       if (event === SUPABASE_EVENTS.SIGNED_IN) {
-        checkUser(session?.user)
+        handleLogin(session?.user)
         setUser(session?.user)
       }
 
@@ -58,15 +58,17 @@ const Header = (): ReactElement => {
     <header className="text-gray-600 bg-white shadow-md dark:bg-gray-700 shadow-black/10 body-font">
       <div className="container flex flex-col flex-wrap items-center p-5 mx-auto md:flex-row">
         <Link href={HOME} prefetch={false}>
-          <a className="flex-1 font-bold text-center lg:flex-none text-primary">{DEFAULT_TITLE}</a>
+          <a className="flex-1 font-bold text-lg text-center lg:flex-none text-primary">
+            {DEFAULT_TITLE}
+          </a>
         </Link>
         <nav className="flex flex-wrap items-center justify-center text-base md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400">
           {LINKS.map(({ label, path }) => (
             <Link href={path} key={label} prefetch={false}>
               <a
                 className={clsx(
-                  'font-bold p-2 hover:text-primary dark:text-white',
-                  clsx(pathname === path && 'text-primary')
+                  'font-bold p-2 hover:text-primary dark:text-white text-lg',
+                  pathname === path && 'text-primary'
                 )}
               >
                 {label}
@@ -85,8 +87,9 @@ const Header = (): ReactElement => {
               {({ open }) => (
                 <>
                   <div>
-                    <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm text-black rounded-md dark:text-white bg-opacity-80 bg-primary hover:bg-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 font-body">
+                    <Menu.Button className="flex w-full p-4 text-black rounded-md dark:text-white  bg-primary hover:bg-primaryDark font-body items-center">
                       My Account
+                      <UserIcon className="w-5 h-5 ml-2" />
                     </Menu.Button>
                   </div>
                   <Transition
@@ -104,7 +107,7 @@ const Header = (): ReactElement => {
                         {DROPDOWN_LINKS.map(({ label, path }) => (
                           <Menu.Item key={label}>
                             <Link href={path} prefetch={false}>
-                              <a className="flex items-center w-full px-2 py-2 text-sm hover:text-primary">
+                              <a className="flex items-center w-full px-2 py-2 text-base hover:text-primary">
                                 {label}
                               </a>
                             </Link>
@@ -114,7 +117,7 @@ const Header = (): ReactElement => {
                       <div className="px-1 py-1">
                         <Menu.Item>
                           <button
-                            className="flex items-center w-full px-2 py-2 text-sm hover:text-primary"
+                            className="flex items-center w-full px-2 py-2 text-base hover:text-primary"
                             onClick={handleLogout}
                           >
                             Logout

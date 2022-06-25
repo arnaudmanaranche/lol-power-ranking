@@ -20,7 +20,8 @@
     "incremental": true,
     "paths": {
       "Contexts/*": ["src/contexts/*"],
-      "Utils/*": ["src/utils/*"]
+      "Utils/*": ["src/utils/*"],
+      "Assets/*": ["src/svgs/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "custom.d.ts", "src/pages/_error.js"],
