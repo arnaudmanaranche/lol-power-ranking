@@ -2724,7 +2724,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@corex/deepmerge@npm:^2.6.34":
+"@corex/deepmerge@npm:^2.6.148":
   version: 2.6.148
   resolution: "@corex/deepmerge@npm:2.6.148"
   checksum: b80b6b3e408901151de26e27b519a43cda1771a81e5390ff10cd6b47add0139bb315ca44112ff076d68ac887d7cfe237c9fb33868efb04839c4afb7c38864385
@@ -8162,14 +8162,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001261, caniuse-lite@npm:^1.0.30001286, caniuse-lite@npm:^1.0.30001317, caniuse-lite@npm:^1.0.30001332":
-  version: 1.0.30001359
-  resolution: "caniuse-lite@npm:1.0.30001359"
-  checksum: e15dbf4ea445367e998ad525c54620275ae382446d0bc289d14bf014a159074a2207881b46406b011a72676686f8a734457ea8e8d4856dc3f700c3391e89b43e
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001335, caniuse-lite@npm:^1.0.30001358":
+"caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001261, caniuse-lite@npm:^1.0.30001286, caniuse-lite@npm:^1.0.30001317, caniuse-lite@npm:^1.0.30001332, caniuse-lite@npm:^1.0.30001335, caniuse-lite@npm:^1.0.30001358":
   version: 1.0.30001359
   resolution: "caniuse-lite@npm:1.0.30001359"
   checksum: e15dbf4ea445367e998ad525c54620275ae382446d0bc289d14bf014a159074a2207881b46406b011a72676686f8a734457ea8e8d4856dc3f700c3391e89b43e
@@ -14886,15 +14879,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"matcher@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "matcher@npm:4.0.0"
-  dependencies:
-    escape-string-regexp: ^4.0.0
-  checksum: d338aff31d8dfd3626873e43777f46b123579734d53bb8d18d64b08a822ba5e8d39f5fe2e23403258e6143aa0cbe20a15662720d825cd0d3af961d5a44230328
-  languageName: node
-  linkType: hard
-
 "md5.js@npm:^1.3.4":
   version: 1.3.5
   resolution: "md5.js@npm:1.3.5"
@@ -15495,18 +15479,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:1.6.203":
-  version: 1.6.203
-  resolution: "next-sitemap@npm:1.6.203"
+"next-sitemap@npm:1.9.12":
+  version: 1.9.12
+  resolution: "next-sitemap@npm:1.9.12"
   dependencies:
-    "@corex/deepmerge": ^2.6.34
-    matcher: ^4.0.0
+    "@corex/deepmerge": ^2.6.148
     minimist: ^1.2.5
   peerDependencies:
     next: "*"
   bin:
     next-sitemap: bin/next-sitemap
-  checksum: a083a5ab9e6dc6345dcb27207d31a46dd4f84ff3cc7fa673038ed82d9961cbb7481958e35e67f6febff659d4e99749ab3256bab1263917f4e842d82147ab49b4
+  checksum: 069b3c2c26dadc970b0768f6bc525784a4a75d9b3ab6ea6da6024034d078a0ac4954251040ffa9dd089f4960ff15aa02d572cfe9064e24b7101f2d423e405e73
   languageName: node
   linkType: hard
 
@@ -21027,7 +21010,7 @@ typescript@4.5.4:
     framer-motion: 5.5.5
     ioredis: 4.28.5
     next: 12.1.6
-    next-sitemap: 1.6.203
+    next-sitemap: 1.9.12
     next-themes: 0.0.14
     next-transpile-modules: 9.0.0
     plaiceholder: 2.2.0

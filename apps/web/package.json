@@ -36,7 +36,7 @@
     "@lpr/types": "*",
     "@svgr/webpack": "5.5.0",
     "cypress": "10.2.0",
-    "next-sitemap": "1.6.203",
+    "next-sitemap": "1.9.12",
     "prisma": "2.26.0"
   },
   "prisma": {
